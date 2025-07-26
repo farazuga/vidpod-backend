@@ -23,7 +23,10 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'vidpod-session-secret',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({ mongoUrl: process.env.MONGODB_URI }),
+  store: MongoStore.create({ 
+  mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/vidpod'
+}),
+
   cookie: { secure: process.env.NODE_ENV === 'production', httpOnly: true, maxAge: 24 * 60 * 60 * 1000 }
 }));
 
