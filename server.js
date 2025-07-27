@@ -64,3 +64,16 @@ app.get('/', (req, res) => {
 
 app.listen(PORT, () => console.log(`🚀 VidPod Backend running on port ${PORT}`));
 module.exports = app;
+
+// Debug endpoint to test users exist
+app.get('/api/debug/users', async (req, res) => {
+  try {
+    const User = require('./models/User');
+    const users = await User.find({}).select('email firstName role');
+    res.json({ count: users.length, users });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+app.listen(PORT, '0.0.0.0', () => console.log(`🚀 VidPod Backend running on port ${PORT}`));
