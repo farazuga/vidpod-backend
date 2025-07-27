@@ -8,3 +8,4 @@ Educational Video Podcasting Platform Backend API
 4. npm start
 
 Test accounts: admin@vidpod.com/admin123, teacher@vidpod.com/teacher123, student@vidpod.com/student123
+# Debug endpoint added
